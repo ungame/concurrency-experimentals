@@ -71,7 +71,7 @@ func (p *postgresProductsPersistence) GetAll() ([]*models.Product, error) {
 	var products []*models.Product
 
 	for rows.Next() {
-		var product *models.Product
+		product := &models.Product{}
 		err = rows.Scan(
 			&product.ID,
 			&product.Name,

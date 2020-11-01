@@ -9,3 +9,7 @@ func GetMongoDbDsn() string {
 func GetPostgresDsn() string {
 	return fmt.Sprintf("user=%s password=%s dbname=%s sslmode=%s", "root", "root", "mydb", "disable")
 }
+
+func GetMysqlDsn() string {
+	return fmt.Sprintf("%s:%s@tcp(%s:%d)/%s?charset=utf8&parseTime=True&loc=Local", "root", "root", "localhost", 3306, "mydb")
+}

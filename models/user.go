@@ -77,7 +77,7 @@ func (u *User) ToMongoUserModel() *MongoUserModel {
 }
 
 type MongoUserModel struct {
-	ID        bson.ObjectId `bson:"id"`
+	ID        bson.ObjectId `bson:"_id"`
 	Username  string        `bson:"username"`
 	FirstName string        `bson:"first_name"`
 	LastName  string        `bson:"last_name"`

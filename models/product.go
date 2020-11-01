@@ -86,7 +86,7 @@ func (p *Product) ToMongoProductModel() *MongoProductModel {
 }
 
 type MongoProductModel struct {
-	ID           bson.ObjectId `bson:"id"`
+	ID           bson.ObjectId `bson:"_id"`
 	Name         string        `bson:"name"`
 	Description  string        `bson:"description"`
 	Quantity     int           `bson:"quantity"`

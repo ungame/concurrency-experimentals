@@ -5,6 +5,7 @@ import (
 	"concurrency-experimentals/models"
 	"database/sql"
 
+	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"
 )
 
@@ -22,8 +23,23 @@ type ProductsPersistence interface {
 	DeleteAll() error
 }
 
+type OrdersPersistence interface {
+	Create(*models.Order) error
+	Get(id string) (*models.Order, error)
+	GetAll() ([]*models.Order, error)
+	DeleteAll() error
+}
+
 func GetPostgresConnection() *sql.DB {
-	conn, err := sql.Open("postgres", configs.GetPostgresDsn())
+	return open("postgres", configs.GetPostgresDsn())
+}
+
+func GetMysqlConnection() *sql.DB {
+	return open("mysql", configs.GetMysqlDsn())
+}
+
+func open(driver, dsn string) *sql.DB {
+	conn, err := sql.Open(driver, dsn)
 	if err != nil {
 		panic(err)
 	}

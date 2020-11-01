@@ -5,7 +5,7 @@ CREATE TABLE products (
     name VARCHAR(255),
     description TEXT,
     quantity INT DEFAULT 0,
-    price MONEY,
+    price NUMERIC(18, 2),
     available CHAR(1) DEFAULT '0',
     photo_url  VARCHAR(255),
     ratings INT DEFAULT 0,
